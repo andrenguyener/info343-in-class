@@ -109,6 +109,8 @@ logValue("2016-10-27", formatAsDate);
  */
 var someNumber = 123456789;
 //logValue(...)
+logValue(someNumber, formatAsNumber);
+logValue(someNumber, formatAsCurrency);
 
 
 
@@ -190,7 +192,9 @@ console.log("property names:", propNames);
  * see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
  */
 
-
+propNames.forEach(function(name) {
+    console.log(name + "=" + course[name]);
+});
 
 
 
@@ -351,7 +355,17 @@ console.log("Total count", formatAsNumber(totalCount));
  * just reverse the logic in your compare function.
  */
 
+males.sort(function (record1, record2) {
+    return record2 - record1;
+});
 
+var leastMales = males.slice(0,11);
+console.log(leastMales);
+var leastPopMaleNames = leastMales.map(function(record) {
+    return record.name;
+});
+
+console.log(leastPopMaleNames);
 
 /**
  * PRACTICE
@@ -369,7 +383,17 @@ console.log("Total count", formatAsNumber(totalCount));
  * top 10 and write those to the console.
  */
 
-
+function compareByProp(propName) {
+    return function(rec1, rec2) {
+        if (typeof rec1[propName] == "string") {
+            return rec1[propName].localeCompare(rec2[propName]);
+        } else {
+            return rec1[propName] - rec2[propName];
+        }
+        
+    }
+}
+BABYNAMES.sort(compareByProp("count"));
 
 
 
