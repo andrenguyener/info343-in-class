@@ -32,10 +32,11 @@ export default class extends React.Component {
  
     render() {
         var totalPages;
+        var currentPage;
         var movies;
         if (this.state.movies) {
             totalPages = (<p>{this.state.movies.total_pages} pages</p>)
-
+            currentPage = (<p>{this.state.movies.page}</p>)
             // movies = [];
             // this.state.movie.results.forEach(function(m) {
             //     movies.push(<Movie key={m.id} movie={m} />);
@@ -47,6 +48,7 @@ export default class extends React.Component {
             <div className="container">
                 <h1>Products View</h1>
                 <p>some nifty products for sale</p>
+                {currentPage}
                 {totalPages}
                 {movies}
             </div>

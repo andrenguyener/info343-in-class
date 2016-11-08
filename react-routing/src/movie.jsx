@@ -9,6 +9,8 @@ export default class extends React.Component {
         return (
             <div>
                 <h2>{this.props.movie.title}</h2>
+                <img src={"http://image.tmdb.org/t/p/w154/" + this.props.movie.poster_path} alt=""/>
+                <p>{this.props.movie.overview}</p>
             </div>
         );
     }
